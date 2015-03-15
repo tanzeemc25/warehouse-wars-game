@@ -1,0 +1,162 @@
+body{
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+h1{
+	color: #12a0a9;
+	text-shadow: 1px 1px 1px #474747;
+}
+h2{
+color: #325b7b;
+text-shadow: 1px 2px 1px #fff;
+border: 1px solid #e1e1e1;
+background: #f4f4f4;
+border-radius: 4px;
+padding: 5px 15px;
+font-size: 18px;
+}
+em{
+	font-size: 12px;
+	font-style: italic;
+	color: #ce205a;
+}
+.box{
+	border: 1px solid #e1e1e1;
+	background: #f4f4f4;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	padding: 5px 15px;
+	display: block;
+	clear: both;
+}
+	#ww {
+		border: 1px solid black;
+	}
+	#ww tr{
+
+	}
+	#ww tr td{
+		border: 1px solid black;
+	}
+	td img {
+		height: 24px;
+		width: 24px;
+	} 
+	#gameParams input{	
+	height: 8px;
+	width: 100px;
+	padding: 5px;
+	border: 2px solid #ccc;
+}
+#gameParams label{	
+	font-family: Arial, Helvetica, sans-serif;
+	float: left;
+	clear: both;
+	margin: 5px 0;
+
+}
+#gameParams label span{	
+	width: 153px;
+	display: inline-block;
+	text-align: right;
+	font-size: 13px;
+	font-weight: bold;
+}
+#gameParams button {
+	font-size: 12px;
+	color: #123d54;
+	padding: 5px 10px;
+	background: -moz-linear-gradient(
+		top,
+		#afd9fa 0%,
+		#588fad);
+	background: -webkit-gradient(
+		linear, left top, left bottom, 
+		from(#afd9fa),
+		to(#588fad));
+	border-radius: 6px;
+	border: 1px solid #003366;
+	box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 1px rgba(255,255,255,1);
+	text-shadow:
+		0px -1px 0px rgba(000,000,000,0.7),
+		0px 1px 0px rgba(255,255,255,0.3);
+		width: 87px;
+}	
+.fieldContain{
+	clear: both;
+	margin: 0 auto;
+}
+#btnPause, #btnResume, #btnReset { display: none;}
+
+#msgBox{
+	font: bold 18px/1.5em Helvetica, Arial, sans-serif;
+	color: #ce205a;
+	text-align: center;
+	text-transform: uppercase;
+}
+@keyframes devilshake{ 
+	0% { transform: translate(2px, 1px) rotate(0deg); } 
+	10% { transform: translate(-1px, -2px) rotate(-1deg); } 
+	20% { transform: translate(-3px, 0px) rotate(1deg); } 
+	30% { transform: translate(0px, 2px) rotate(0deg); } 
+	40% { transform: translate(1px, -1px) rotate(1deg); } 
+	50% { transform: translate(-1px, 2px) rotate(-1deg); } 
+	60% { transform: translate(-3px, 1px) rotate(0deg); } 
+	70% { transform: translate(2px, 1px) rotate(-1deg); } 
+	80% { transform: translate(-1px, -1px) rotate(1deg); } 
+	90% { transform: translate(2px, 2px) rotate(0deg); } 
+	100% { transform: translate(1px, -2px) rotate(-1deg); } 
+} 
+
+@-moz-keyframes devilshake{ 
+	0% { -moz-transform: translate(2px, 1px) rotate(0deg); } 
+	10% { -moz-transform: translate(-1px, -2px) rotate(-1deg); } 
+	20% { -moz-transform: translate(-3px, 0px) rotate(1deg); } 
+	30% { -moz-transform: translate(0px, 2px) rotate(0deg); } 
+	40% { -moz-transform: translate(1px, -1px) rotate(1deg); } 
+	50% { -moz-transform: translate(-1px, 2px) rotate(-1deg); } 
+	60% { -moz-transform: translate(-3px, 1px) rotate(0deg); } 
+	70% { -moz-transform: translate(2px, 1px) rotate(-1deg); } 
+	80% { -moz-transform: translate(-1px, -1px) rotate(1deg); } 
+	90% { -moz-transform: translate(2px, 2px) rotate(0deg); } 
+	100% { -moz-transform: translate(1px, -2px) rotate(-1deg); } 
+} 
+
+@-webkit-keyframes devilshake { 
+	0% { -webkit-transform: translate(2px, 1px) rotate(0deg); } 
+	10% { -webkit-transform: translate(-1px, -2px) rotate(-1deg); } 
+	20% { -webkit-transform: translate(-3px, 0px) rotate(1deg); } 
+	30% { -webkit-transform: translate(0px, 2px) rotate(0deg); } 
+	40% { -webkit-transform: translate(1px, -1px) rotate(1deg); } 
+	50% { -webkit-transform: translate(-1px, 2px) rotate(-1deg); } 
+	60% { -webkit-transform: translate(-3px, 1px) rotate(0deg); } 
+	70% { -webkit-transform: translate(2px, 1px) rotate(-1deg); } 
+	80% { -webkit-transform: translate(-1px, -1px) rotate(1deg); } 
+	90% { -webkit-transform: translate(2px, 2px) rotate(0deg); } 
+	100% { -webkit-transform: translate(1px, -2px) rotate(-1deg); } 
+} 
+
+.shake{ 
+	animation-name: devilshake; 
+	animation-iteration-count: infinite; 
+	animation-timing-function: linear; 
+	animation-duration: 0.8s; 
+	transform-origin:50% 50%; 
+	
+	-webkit-animation-name: devilshake; 
+	-webkit-animation-iteration-count: infinite; 
+	-webkit-animation-timing-function: linear; 
+	-webkit-animation-duration: 0.8s; 
+	-webkit-transform-origin:50% 50%; 
+	
+	-moz-animation-name: devilshake; 	
+	-moz-animation-iteration-count: infinite; 
+	-moz-animation-timing-function: linear; 
+	-moz-animation-duration: 0.8s; 
+	-moz-transform-origin:50% 50%; 
+	
+	display:inline-block; 
+}

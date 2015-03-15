@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta HTTP-EQUIV="EXPIRES" CONTENT="-1">
+		<title>Tanzeem's Warehouse Wars</title>	
+		<link rel="stylesheet" type="text/css" href="style.css"/>
+
+	</head>
+	<body bgcolor=ffffff onload="" >
+		<center>
+			<h1>Warehouse Wars</h1>
+
+			<table>
+				<tr>
+					<td> <div id="stage"> </div></td>  
+					<td>
+						<center>
+							
+							<table class="legend">
+								<tr>
+									<td colspan="5">
+										<div id="msgBox">
+												
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="5">
+										<div class="box">
+										<form name="gameParams" id="gameParams" method="post" action="">
+										<label for="timeElapsed"><span>Time:</span>
+											<input type="text" value="0" name="timeElapsed" id="timeElapsed" /></label>	
+										<div id="userInputs" class="fieldContain">
+											<label for="gameWidth"><span>Width:</span>
+												<input type="text" value="15" name="gameWidth" id="gameWidth" /></label>
+											<label for="gameHeight"><span>Height:</span>		
+												<input type="text" value="15" name="gameHeight" id="gameHeight" /></label>
+											<label for="totalMonsters"><span>*Number of Monsters:</span>				
+												<input type="text" value="10" name="totalMonsters" id="totalMonsters" /></label>
+											<div class="fieldContain">
+												<em><strong>*Note:</strong> The maximum monsters allowed is <br />10% of the play area. If you enter more, it <br />will default to 10%.</em> 
+											</div>											
+										</div>
+										<br />
+										<div class="fieldContain">
+											<button id="btnPlay" type="submit" onclick="return play();">Play</button>			
+											<button id="btnPause" type="button" onclick="return pause()">Pause</button>
+											<button id="btnResume" type="button" onclick="return resume()">Resume</button>
+											<button id="btnReset" type="button" onclick="return stop()">Quit</button>	
+												
+										</div>	
+										</form>
+									</div>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="5" align="center">
+									<h2>Legend</h2>
+									</td>
+								</tr>
+								<tr align="center">
+									<td> <img src="icons/blank.gif" id="blankImage" /> </td>
+									<td> <img src="icons/emblem-package-2-24.png" id="boxImage" /> </td>
+									<td> <img src="icons/face-cool-24.png" id="playerImage" /> </td>
+									<td> <img src="icons/face-devil-grin-24.png" id="monsterImage" /> </td>
+									<td> <img src="icons/wall.jpeg" id="wallImage" /> </td>
+								</tr>
+								<tr align="center">
+									<td> Empty </td>
+									<td> Box </td>
+									<td> Player </td>
+									<td> Monster </td>
+									<td> Wall </td>
+								</tr>
+							</table>
+							<h2>Controls</h2>
+							<table class="controls">
+								<tr>
+									<td><img id="nw" src="icons/north_west.svg" /></td>
+									<td><img id="n" src="icons/north.svg" /></td>
+									<td><img id="ne" src="icons/north_east.svg" /></td>
+								</tr>
+								<tr>
+									<td><img id="w" src="icons/west.svg" /></td>
+									<td>&nbsp;</td>
+									<td><img id="e" src="icons/east.svg" /></td>
+								</tr>
+								<tr>
+									<td><img id="sw" src="icons/south_west.svg" /></td>
+									<td><img id="s" src="icons/south.svg" /></td>
+									<td><img id="se" src="icons/south_east.svg" /></td>
+								</tr>
+							</table>
+						</center>
+					</td>
+				</tr>
+			</table>
+		</center>
+
+	<script type="text/javascript"> 
+	  	var snd = new Audio("hs.mp3");
+		var timeLabel = document.getElementById("timeElapsed");
+		var msbBox = document.getElementById("msgBox");		
+
+	  	stage=null;
+			// SOME GLUE CODE CONNECTING THIS PAGE TO THE STAGE
+			interval=null;
+			function setupGame(w, h, m){
+				stage=new Stage(w,h,m,"stage");
+				stage.initialize();
+			}
+			function startGame(){
+			    interval = setInterval(function(){ stage.step(); }, 1000);
+			}
+			function pause(){
+				msgBox.innerHTML = "GAME PAUSED"; 
+				stage.pause = true;
+				try{stage.controls(stage.player, true);}catch(err){}
+			}
+			function resume(){
+				msgBox.innerHTML = ""; 
+				stage.pause = false;
+				try{stage.controls(stage.player, false);}catch(err){}
+			}	
+			
+			function play(){
+				document.getElementById("btnPlay").style.display="none";
+				document.getElementById("btnPause").style.display="inline-block";
+				document.getElementById("btnResume").style.display="inline-block";
+				document.getElementById("btnReset").style.display="inline-block";
+				document.getElementById("stage").style.display="inline-block";
+				var w = document.getElementById("gameWidth").value;
+				var h = document.getElementById("gameHeight").value;
+				var m = document.getElementById("totalMonsters").value;
+				setupGame(w,h,m);
+				startGame();
+				document.getElementById("userInputs").style.display = "none";
+				document.getElementById("userInputs").style.height = "0px";
+
+				deanimate();
+
+				return false;
+			}
+
+			function stop(){
+  				msgBox.innerHTML = "";  						
+				snd.load();
+				stage = null;
+				window.clearInterval(interval);
+				interval=null;
+
+				document.getElementById("userInputs").style.display = "block";	
+				document.getElementById("userInputs").style.height = "auto";
+				document.getElementById("gameWidth").value = "15";
+				document.getElementById("gameHeight").value = "15";
+				document.getElementById("totalMonsters").value = "10";
+				document.getElementById("btnPlay").style.display="inline-block";
+				document.getElementById("btnPause").style.display="none";
+				document.getElementById("btnResume").style.display="none";
+				document.getElementById("btnReset").style.display="none";
+				document.getElementById("stage").style.display="none";			
+				timeLabel.value = "0";
+
+				deanimate();
+
+	  			return false; 
+			}
+
+			function deanimate(){
+				
+				var images = document.getElementsByTagName("img");
+	  			for(i=0; i<images.length; i++){
+	  				images[i].className = "";			
+	  			}
+			}
+			deanimate();
+
+		</script>	
+		<script language="javascript" src="ww.js" > </script>		
+	</body>
+</html>
+
